@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/execute-query" name="ExecuteQueryAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST GET">
+        <inSequence>
+            <log level="custom">
+                <property name="Message" value="Executing a database query"/>
+            </log>
+            <dbreport>
+                <connection>
+                    <pool>
+                        <password>{wso2:vault-lookup('MYSQL_PASSWORD')}</password>
+                        <dsName>dsnam</dsName>
+                        <icClass>context</icClass>
+                        <url>jdbc:mysql://localhost:3306/USER_REGISTRATION_DB</url>
+                        <user>root</user>
+                    </pool>
+                </connection>
+                <statement>
+                    <sql><![CDATA[insert into UserInfo (userId, name, email, city, phone) values (?, ?, ?, ?, ?);]]></sql>
+                    <parameter expression="//id" type="INTEGER"/>
+                    <parameter expression="//name" type="CHAR"/>
+                    <parameter expression="//email" type="CHAR"/>
+                    <parameter expression="//city" type="CHAR"/>
+                    <parameter expression="//phone" type="CHAR"/>
+                </statement>
+            </dbreport>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
