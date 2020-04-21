@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-Description: ClassMediator
+Bundle-SymbolicName: ClassMediator
+Built-By: prabushi
+Bundle-ManifestVersion: 2
+Bnd-LastModified: 1587402143097
+Import-Package: org.apache.axiom.om,org.apache.axis2.context;version="
+ [1.6,2)",org.apache.synapse,org.apache.synapse.commons.json,org.apach
+ e.synapse.core.axis2,org.apache.synapse.mediators
+DynamicImport-Package: *
+Tool: Bnd-1.15.0
+Export-Package: org.oom.test;uses:="org.apache.axiom.om,org.apache.syn
+ apse.mediators,org.apache.synapse.core.axis2,org.apache.synapse.commo
+ ns.json,org.apache.synapse,org.apache.axis2.context"
+Bundle-Name: ClassMediator
+Bundle-Version: 1.0.0
+Created-By: Apache Maven Bundle Plugin
+Build-Jdk: 1.8.0_231
+
